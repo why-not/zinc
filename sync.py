@@ -21,7 +21,7 @@ def get_tags(strg):
 
 def strip_content(strg):
 
-    # lower, because that's how you like it.
+    # lower case, because that's how I like it.
     # TODO: remove this from the public repo.
     strg = strg.lower().strip()
 
@@ -175,18 +175,6 @@ def push_local_items(local_items, api):
         if type(item['content']) == type(''):
             items2id[item['content']] = item['id']
 
-    # this is a weird work around because the api has some
-    # weirdness that I don't understand. Sometimes the local
-    # UUID doesn't get replaced by a server assigned integer,
-    # and in this case the item becomes useless. You can't
-    # perform any operations on it since the server hasn't
-    # registered it nor will it in the future. So here
-    # I collect either tasks that don't have an int UUID
-    # or the ones that weren't pushed into the server in the
-    # first place and push them again or for the first time
-    # as the case maybe. Only in a few rare cases does the
-    # UUID still not get resolved to an int when doing this.
-    # This should do for now.
 
     counter = 0
     for i, item in enumerate(local_items):
