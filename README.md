@@ -1,2 +1,2 @@
 # zinc
-sync plain tasks file and todoist. 
+sync plain_tasks file and todoist. 
