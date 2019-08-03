@@ -357,7 +357,7 @@ def reset_account(api):
         try:
             itm = api.items.get_by_id(item['id'])
             itm.delete()
-        except :
+        except:
             print('some exception, who cares!')
         if counter > 90:
             counter = 0
@@ -369,21 +369,6 @@ def reset_account(api):
         api.sync()
         time.sleep(2)
         api.commit()
-
-    # remote_items = api.items.all()
-    # if len(remote_items) > 0:
-    #     remote_items = api.items.all()
-    #     for item in remote_items:
-    #         print(item['content'])
-    #         try:
-    #             itm = api.items.get_by_id(item['id'])
-    #             itm.delete()
-    #             time.sleep(2)
-    #             api.commit()
-    #         except :
-    #             print('some exception, who cares!')
-
-
 
 
 def reset_labels(api):
