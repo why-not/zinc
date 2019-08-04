@@ -428,21 +428,19 @@ def main():
     #           'user_id': 208884}
     # ----------------------------------
 
-    import sys; sys.path.append('/Users/senthil/Dropbox/workspace/todoist/')
-    # from sync import *
-
-    # ----------------------------------
-
-    todo_sync       = '/Users/senthil/Dropbox/workspace/todo/today_sync.todo'
-
     # parse the todo file and get local state.
     # items need to have parent if parent is not project.
-    todo_file       = '/Users/senthil/Dropbox/workspace/todo/today.todo'
+    todo_file       = 'today.todo'
+
+    # The output after the sync is written to a new file, which you copy/paste
+    # to your original file. This code is not stable (yet), and this is a fail safe
+    # against something eating up all your todos.
+    todo_sync       = 'today_sync.todo'
+
     local_projects, local_items, local_labels = parse_file(todo_file)
 
     # initiate api and get the remote state.
-    # api = todoist.TodoistAPI('67d3f9810517d77d4d6ab71f51d8f4a727132f04')
-    api = todoist.TodoistAPI('454bca41613803c3e44527fbd7dc64d555bd5b0e')
+    api = todoist.TodoistAPI('your todoist api token')
     api.sync()
 
     # send local projects, labels up to register them with remote.
@@ -461,7 +459,7 @@ def main():
 
 if __name__ == '__main__':
 
-    # api = todoist.TodoistAPI('454bca41613803c3e44527fbd7dc64d555bd5b0e')
+    # api = todoist.TodoistAPI('your todoist api token')
     # reset_account(api)
 
     main()
